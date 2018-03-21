@@ -22,18 +22,18 @@ class UserTableSeeder extends Seeder
 
         // Record thứ nhất
         $employee = new User();
-        $employee->name = 'Employee Name';
-        $employee->email = 'employee@example.com';
-        $employee->password = bcrypt('secret');
+        $employee->name = 'John';
+        $employee->email = 'john@example.com';
+        $employee->password = bcrypt('123456');
         $employee->save();  // Lưu vào DB
         // Thêm mối quan hệ giữa user và role và pivot table
         $employee->roles()->attach($role_employee);
         
         // Record thứ hai
         $manager = new User();
-        $manager->name = 'Manager Name';
-        $manager->email = 'manager@example.com';
-        $manager->password = bcrypt('secret');
+        $manager->name = 'Admin';
+        $manager->email = 'admin@example.com';
+        $manager->password = bcrypt('123456');
         $manager->save();
         $manager->roles()->attach($role_manager);
     }

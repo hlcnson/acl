@@ -62,10 +62,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        // ]);
+        
+        // Tạo tài khoản user mới
+        $user = User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        
+        // Lấy record đầu tiên trong table roles với thuộc tính name là employee
+        // và add vào pivot table cho mối quan hệ n-n giữa table users và table roles
+        $user->roles()->attach(Role::where('name', 'employee')->first());
+        
+        return $user;
     }
 }

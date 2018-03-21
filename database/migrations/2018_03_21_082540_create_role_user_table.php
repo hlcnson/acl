@@ -14,10 +14,10 @@ class CreateRoleUserTable extends Migration
     public function up()
     {
         // Tạo cấu trúc table
-        Schema::create(‘role_user’, function (Blueprint $table) {
-            $table->increments(‘id’);
-            $table->integer(‘role_id’)->unsigned();
-            $table->integer(‘user_id’)->unsigned();
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('role_id')->unsigned();
+            $table->integer('user_id')->unsigned();
         });
     }
 
